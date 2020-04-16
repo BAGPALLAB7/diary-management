@@ -1,0 +1,43 @@
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.0'
+    }
+}
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 'android-22'
+
+
+    defaultConfig {
+        buildConfigField "long", "BUILT", System.currentTimeMillis() + "L"
+    }
+
+    lintOptions {
+	disable 'IconDensities', 'ContentDescription', 'SetJavaScriptEnabled',
+                'IconDuplicates'
+        // abortOnError false
+    }
+}
+
+// tasks.withType(JavaCompile) {
+//     options.compilerArgs << "-Xlint:all"
+// }
+
+repositories {
+    jcenter()
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
+dependencies {
+    compile 'com.github.billthefarmer:CustomCalendarView:v1.04'
+    compile 'com.github.billthefarmer:MarkdownView:v1.0'
+}
